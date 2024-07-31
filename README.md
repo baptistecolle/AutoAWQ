@@ -67,7 +67,7 @@ pip install autoawq@https://github.com/casper-hansen/AutoAWQ/releases/download/v
 Or from the main branch directly:
 
 ```
-pip install autoawq@https://github.com/casper-hansen/AutoAWQ.git
+pip install autoawq@git+https://github.com/casper-hansen/AutoAWQ.git
 ```
 
 Or by cloning the repository and installing from source:
