@@ -1,16 +1,16 @@
 import os
 import torch
 import platform
-import requests
 from pathlib import Path
 from setuptools import setup, find_packages
-from torch.utils.cpp_extension import CUDAExtension
 
 
 def get_latest_kernels_version(repo):
     """
     Get the latest version of the kernels from the github repo.
     """
+    import requests
+    
     response = requests.get(f"https://api.github.com/repos/{repo}/releases/latest")
     data = response.json()
     tag_name = data["tag_name"]
@@ -139,6 +139,8 @@ if force_extension == "1":
     # NOTE: We create an empty CUDAExtension because torch helps us with
     # creating the right boilerplate to enable correct targeting of
     # the autoawq-kernels package
+    from torch.utils.cpp_extension import CUDAExtension
+    
     common_setup_kwargs["ext_modules"] = [
         CUDAExtension(
             name="test_kernel",
